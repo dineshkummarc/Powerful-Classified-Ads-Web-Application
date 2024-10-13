@@ -114,16 +114,16 @@ class BaseTests extends TestCase
      */
     public function testCustomSuffix(): void
     {
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             $post = PostWithCustomSuffix::create([
                 'title' => 'A Post Title',
                 'subtitle' => 'A Subtitle',
             ]);
 
-            if ($i === 0) {
+            if ($i === 1) {
                 self::assertEquals('a-post-title', $post->slug);
             } else {
-                self::assertEquals('a-post-title-' . chr($i + 96), $post->slug);
+                self::assertEquals('a-post-title-' . chr($i + 95), $post->slug);
             }
         }
     }
@@ -197,7 +197,7 @@ class BaseTests extends TestCase
         self::assertEquals('my-first-post', $post1->slug);
 
         $post2 = $post1->replicate();
-        self::assertEquals('my-first-post-1', $post2->slug);
+        self::assertEquals('my-first-post-2', $post2->slug);
     }
 
     /**
@@ -238,13 +238,13 @@ class BaseTests extends TestCase
      */
     public function testMaxLengthWithIncrements(): void
     {
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             $post = PostWithMaxLength::create([
                 'title' => 'A post with a really long title'
             ]);
-            if ($i === 0) {
+            if ($i === 1) {
                 self::assertEquals('a-post', $post->slug);
-            } elseif ($i < 10) {
+            } else {
                 self::assertEquals('a-post-' . $i, $post->slug);
             }
         }
@@ -255,13 +255,13 @@ class BaseTests extends TestCase
      */
     public function testMaxLengthSplitWordsWithIncrements(): void
     {
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             $post = PostWithMaxLengthSplitWords::create([
                 'title' => 'A post with a really long title'
             ]);
-            if ($i === 0) {
+            if ($i === 1) {
                 self::assertEquals('a-post-wit', $post->slug);
-            } elseif ($i < 10) {
+            } else {
                 self::assertEquals('a-post-wit-' . $i, $post->slug);
             }
         }
@@ -313,6 +313,28 @@ class BaseTests extends TestCase
         $post->slug = 'new-custom-slug';
         $post->save();
         self::assertEquals('new-custom-slug', $post->slug);
+    }
+
+    /**
+     * Test that models are still updated even if slug is not updated.
+     *
+     * @see https://github.com/cviebrock/eloquent-sluggable/issues/559
+     */
+    public function testModelStillSavesWhenSlugIsNotUpdated()
+    {
+        $post = Post::create([
+            'title' => 'My Post',
+            'subtitle' => 'My First Subtitle',
+        ]);
+
+        self::assertEquals('my-post', $post->slug);
+
+        $post->subtitle = 'My Second Subtitle';
+        $post->save();
+        $post->refresh();
+
+        self::assertEquals('my-post', $post->slug);
+        self::assertEquals('My Second Subtitle', $post->subtitle);
     }
 
     /**
@@ -528,6 +550,20 @@ class BaseTests extends TestCase
         $post->title = 'Still My First Post';
         $post->save();
         self::assertEquals('still-my-first-post-1', $post->slug);
+    }
+
+    /**
+     * Test that when using the SAVED observer the slug is
+     * actually persisted in storage.
+     */
+    public function testOnSavedPersistsSlug()
+    {
+        $post = PostWithIdSourceOnSaved::create([
+            'title' => 'My Test Post',
+        ]);
+        $post->refresh();
+
+        self::assertEquals('my-test-post-1', $post->slug);
     }
 
     /**

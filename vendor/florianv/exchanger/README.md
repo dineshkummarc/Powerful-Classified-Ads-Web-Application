@@ -2,26 +2,29 @@
 
 [![Build status](http://img.shields.io/travis/florianv/exchanger/master.svg?style=flat-square)](https://travis-ci.org/florianv/exchanger)
 [![Total Downloads](https://img.shields.io/packagist/dt/florianv/exchanger.svg?style=flat-square)](https://packagist.org/packages/florianv/exchanger)
-[![Scrutinizer](https://img.shields.io/scrutinizer/g/florianv/exchanger.svg?style=flat-square)](https://scrutinizer-ci.com/g/florianv/exchanger)
 [![Version](http://img.shields.io/packagist/v/florianv/exchanger.svg?style=flat-square)](https://packagist.org/packages/florianv/exchanger)
 
-Exchanger is a PHP framework to work with currency exchange rates from various services such as 
-**[Fixer](https://fixer.io)** or **[currencylayer](https://currencylayer.com)**.
+Exchanger is a PHP framework to work with currency exchange rates from various services such as
+**[Fixer](https://fixer.io)**, **[Currency Data](https://currencylayer.com)**
+or **[Exchange Rates Data](https://exchangeratesapi.io)**.
 Looking for a simple library based on Exchanger ? Check out [Swap](https://github.com/florianv/swap) !
 
-## Sponsors :heart_eyes: 
+## Sponsors
 
-We are proudly supported by the following echange rate providers offering *free plans up to 1,000 requests per day*:
-
-<img src="https://s3.amazonaws.com/swap.assets/fixer_icon.png?v=2" height="20px" width="20px"/> **[Fixer](https://fixer.io)**
-
-Fixer is a simple and lightweight API for foreign exchange rates that supports up to 170 world currencies.
-They provide real-time rates and historical data, however, EUR is the only available base currency on the free plan.
-
-<img src="https://s3.amazonaws.com/swap.assets/currencylayer_icon.png" height="20px" width="20px"/> **[currencylayer](https://currencylayer.com)**
-
-Currencylayer provides reliable exchange rates and currency conversions for your business up to 168 world currencies.
-They provide real-time rates and historical data, however, USD is the only available base currency on the free plan.
+<table>
+   <tr>
+      <td><img src="https://assets.apilayer.com/apis/fixer.png" width="50px"/></td>
+      <td><a href="https://fixer.io">Fixer</a> is a simple and lightweight API for foreign exchange rates that supports up to 170 world currencies.</td>
+   </tr>
+   <tr>
+     <td><img src="https://assets.apilayer.com/apis/currency_data.png" width="50px"/></td>
+     <td><a href="https://currencylayer.com">Currency Data</a> provides reliable exchange rates and currency conversions for your business up to 168 world currencies.</td>
+   </tr>
+   <tr>
+     <td><img src="https://assets.apilayer.com/apis/exchangerates_data.png" width="50px"/></td>
+     <td><a href="https://exchangeratesapi.io">Exchange Rates Data</a> provides reliable exchange rates and currency conversions for your business with over 15 data sources.</td>
+   </tr>
+</table>
 
 ## Documentation
 
@@ -34,11 +37,20 @@ Here is the complete list of the currently implemented services:
 | Service | Base Currency | Quote Currency | Historical |
 |---------------------------------------------------------------------------|----------------------|----------------|----------------|
 | [Fixer](https://fixer.io) | EUR (free, no SSL), * (paid) | * | Yes |
-| [currencylayer](https://currencylayer.com) | USD (free), * (paid) | * | Yes |
+| [Currency Data](https://currencylayer.com) | USD (free), * (paid) | * | Yes |
+| [Exchange Rates Data](https://exchangeratesapi.io) | USD (free), * (paid) | * | Yes |
+| [Abstract](https://www.abstractapi.com) | * | * | Yes |
 | [coinlayer](https://coinlayer.com) | * Crypto (Limited standard currencies) | * Crypto (Limited standard currencies) | Yes |
+| [Fixer](https://fixer.io) | EUR (free, no SSL), * (paid) | * | Yes |
+| [currencylayer](https://currencylayer.com) | USD (free), * (paid) | * | Yes |
+| [exchangeratesapi](https://exchangeratesapi.io) | USD (free), * (paid) | * | Yes |
 | [European Central Bank](https://www.ecb.europa.eu/home/html/index.en.html) | EUR | * | Yes |
+| [National Bank of Georgia](https://nbg.gov.ge) | * | GEL | Yes |
+| [National Bank of the Republic of Belarus](https://www.nbrb.by) | * | BYN (from 01-07-2016),<br>BYR (01-01-2000 - 30-06-2016),<br>BYB (25-05-1992 - 31-12-1999) | Yes |
 | [National Bank of Romania](http://www.bnr.ro) | RON, AED, AUD, BGN, BRL, CAD, CHF, CNY, CZK, DKK, EGP, EUR, GBP, HRK, HUF, INR, JPY, KRW, MDL, MXN, NOK, NZD, PLN, RSD, RUB, SEK, TRY, UAH, USD, XAU, XDR, ZAR | RON, AED, AUD, BGN, BRL, CAD, CHF, CNY, CZK, DKK, EGP, EUR, GBP, HRK, HUF, INR, JPY, KRW, MDL, MXN, NOK, NZD, PLN, RSD, RUB, SEK, TRY, UAH, USD, XAU, XDR, ZAR | Yes |
+| [National Bank of Ukranie](https://bank.gov.ua) | * | UAH | Yes |
 | [Central Bank of the Republic of Turkey](http://www.tcmb.gov.tr) | * | TRY | Yes |
+| [Central Bank of the Republic of Uzbekistan](https://cbu.uz) | * | UZS | Yes |
 | [Central Bank of the Czech Republic](https://www.cnb.cz) | * | CZK | Yes |
 | [Central Bank of Russia](https://cbr.ru) | * | RUB | Yes |
 | [Bulgarian National Bank](http://bnb.bg) | * | BGN | Yes |
@@ -50,6 +62,8 @@ Here is the complete list of the currently implemented services:
 | [Xignite](https://www.xignite.com) | * | * | Yes |
 | [Currency Converter API](https://www.currencyconverterapi.com) | * | * | Yes (free but limited or paid) |
 | [xChangeApi.com](https://xchangeapi.com) | * | * | Yes |
+| [fastFOREX.io](https://www.fastforex.io) | USD (free), * (paid) | * | No |
+| [exchangerate.host](https://www.exchangerate.host) | * | * | Yes |
 | Array | * | * | Yes |
 
 ## Credits

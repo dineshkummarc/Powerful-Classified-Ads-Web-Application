@@ -2,8 +2,7 @@
 /**
  * OpenPayU Standard Library
  *
- * @copyright  Copyright (c) PayU
- * @license    http://opensource.org/licenses/LGPL-3.0  Open Software License (LGPL 3.0)
+ * @copyright Copyright (c) PayU
  * http://www.payu.com
  * http://developers.payu.com
  */
@@ -15,7 +14,7 @@ class OpenPayU_Shop extends OpenPayU
     /**
      * Retrieving shop data
      * @param string $publicShopId
-     * @return Shop
+     * @return PayuShop
      * @throws OpenPayU_Exception
      * @throws OpenPayU_Exception_Configuration
      */
@@ -38,7 +37,7 @@ class OpenPayU_Shop extends OpenPayU
 
     /**
      * @param array $response
-     * @return Shop
+     * @return PayuShop
      * @throws OpenPayU_Exception
      */
     public static function verifyResponse($response)
@@ -58,12 +57,12 @@ class OpenPayU_Shop extends OpenPayU
         }
 
         if ($httpStatus == 200) {
-            return (new Shop())
+            return (new PayuShop())
                 ->setShopId($message['shopId'])
                 ->setName($message['name'])
                 ->setCurrencyCode($message['currencyCode'])
                 ->setBalance(
-                    (new Balance())
+                    (new PayuShopBalance())
                         ->setCurrencyCode($message['balance']['currencyCode'])
                         ->setTotal($message['balance']['total'])
                         ->setAvailable($message['balance']['available'])

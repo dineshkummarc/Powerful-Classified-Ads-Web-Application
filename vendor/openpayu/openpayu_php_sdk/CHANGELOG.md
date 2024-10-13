@@ -1,3 +1,34 @@
+## 2.3.6
+* define CURL_SSLVERSION_TLSv1_2 missing for rare server configurations
+* Retrieving order refunds #130 (Peter Knut)
+
+## 2.3.5
+* Licence changed
+
+## 2.3.4
+* Remove examples, tests, etc. from release package
+* Sanitize display of POST data in examples
+* Set min TLS version to 1.2
+
+* ## 2.3.3
+* Set Accept header to json
+* Disable escaped json parameters
+
+## 2.3.2
+* Fix PAYU-26585
+
+## 2.3.1
+* Remove cast to int for refund amount
+* Fix #116 - typo fix
+* Fix #117 - Default for CURLOPT_SSL_VERIFYHOST (2) and CURLOPT_SSL_VERIFYPEER (true)
+* Add PHP 7 to TravisCI checks (Vojta Svoboda)
+
+## 2.3.0
+* **Possibly breaking changes** - due possible conflict with popular class names "Shop" and "Balance" change to PayuShop and PayuShopBalance
+
+## 2.2.13
+* Fix #115
+
 ## 2.2.12
 * Add Retrieving shop data
 

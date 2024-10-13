@@ -1,7 +1,9 @@
-<?php namespace Propaganistas\LaravelPhone\Traits;
+<?php
+
+namespace Propaganistas\LaravelPhone\Traits;
 
 use Illuminate\Support\Collection;
-use League\ISO3166\ISO3166;
+use libphonenumber\PhoneNumberUtil;
 
 trait ParsesCountries
 {
@@ -13,15 +15,7 @@ trait ParsesCountries
      */
     public static function isValidCountryCode($country)
     {
-    	$iso3166 = new ISO3166;
-
-    	try {
-    		$iso3166->alpha2($country);
-
-    		return true;
-    	} catch (\Exception $e) {
-    		return false;
-    	}
+        return in_array(strtoupper($country), array_map('strtoupper', PhoneNumberUtil::getInstance()->getSupportedRegions()));
     }
 
     /**
@@ -33,11 +27,14 @@ trait ParsesCountries
     protected function parseCountries($countries)
     {
         return Collection::make(is_array($countries) ? $countries : func_get_args())
-                         ->map(function ($country) {
-                             return strtoupper($country);
-                         })
-                         ->filter(function ($value) {
-                             return static::isValidCountryCode($value);
-                         })->toArray();
+            ->reject(function ($value) {
+                /** @phpstan-ignore-next-line */
+                return is_null($value);
+            })
+            ->filter(function ($value) {
+                return static::isValidCountryCode($value);
+            })->map(function ($value) {
+                return strtoupper($value);
+            })->toArray();
     }
 }

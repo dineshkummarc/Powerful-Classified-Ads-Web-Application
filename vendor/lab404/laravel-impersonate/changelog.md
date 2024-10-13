@@ -1,5 +1,19 @@
 # Laravel Impersonate Changelog
 
+## 1.7.5
+
+- Laravel 11.x support (thanks to [erikn69](https://github.com/erikn69), [#195](https://github.
+  com/404labfr/laravel-impersonate/pull/195))
+
+## 1.7.4
+
+- Laravel 10.x support (thanks to [freekmurze](https://github.com/freekmurze), [#175](https://github.
+  com/404labfr/laravel-impersonate/pull/175))
+
+## 1.7.3
+
+- Laravel 9.x support (thanks to [freekmurze](https://github.com/freekmurze), [#149](https://github.com/404labfr/laravel-impersonate/pull/149))
+
 ## 1.7.2
 
 ### Added

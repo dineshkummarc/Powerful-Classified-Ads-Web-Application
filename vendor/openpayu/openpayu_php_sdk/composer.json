@@ -1,9 +1,9 @@
 {
   "name": "openpayu/openpayu",
   "type": "library",
-  "license": "LGPL-3.0",
+  "license": "apache-2.0",
   "description": "OpenPayU PHP Library",
-  "version": "2.2.12",
+  "version": "2.3.6",
   "extra": [
     {
       "engine": "PHP SDK"
@@ -17,7 +17,7 @@
     }
   ],
   "require": {
-    "php": ">=5.3.0",
+    "php": ">=5.5.19 | >=5.6.3",
     "ext-curl": "*",
     "ext-hash": "*",
     "ext-json": "*"

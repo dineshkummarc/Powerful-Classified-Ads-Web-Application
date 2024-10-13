@@ -40,7 +40,7 @@ class Serialize {
         }
 
         $utcDate = clone $dateTime;
-        $utcDate->setTimezone(new \DateTimeZone('UTC'));
+        $utcDate->setTimezone(new \DateTimeZone('+0000'));
         return $utcDate->format('Y-m-d');
     }
 
@@ -54,7 +54,7 @@ class Serialize {
         }
 
         $utcDate = clone $dateTime;
-        $utcDate->setTimezone(new \DateTimeZone('UTC'));
+        $utcDate->setTimezone(new \DateTimeZone('+0000'));
         return $utcDate->format('Y-m-d\TH:i:s\Z');
     }
 
@@ -63,7 +63,7 @@ class Serialize {
             return $boolOrStr;
         }
 
-        return $boolOrStr ? 'True' : 'False';
+        return $boolOrStr ? 'true' : 'false';
     }
 
     public static function jsonObject($object) {
